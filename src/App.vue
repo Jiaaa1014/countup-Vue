@@ -8,6 +8,7 @@
        :duration="duration"
        :options="options"></count-up>
     <div class="formbox">
+      <div class="ps">＊起始值若大於最終值，則會修正另外一個不是正在編輯的＊</div>
       <label for="start">Start Index</label>
       <input class="form-control" id="start" type="text" v-model.number="startVal"/>
       <label for="start">End Index</label>
@@ -15,20 +16,21 @@
       <label for="dec">Decimals</label>
       <input class="form-control" id="dec" type="text" v-model.number="decimals"/>
     </div>
-
+    <hr>
     <div class="formCheckBox">
-      <label for="easing">useEasing? <span style="color:red;">{{options.useEasing}}</span> </label>
-      <input class="form-control" id="easing" type="checkbox" v-model="options.useEasing"/>
-      <label for="group">useGrouping? <span style="color:red;">{{options.useGrouping}}</span></label>
-      <input class="form-control" id="group" type="checkbox" v-model="options.useGrouping" />
+      <label for="easing">useEasing? <span style="color:red;font-weight:600">{{options.useEasing}}</span> </label>
+      <input class="form-check-input" id="easing" type="checkbox" v-model="options.useEasing"/>
+      <label for="group">useGrouping? <span style="color:red;font-weight:600">{{options.useGrouping}}</span></label>
+      <input class="form-check-input" id="group" type="checkbox" v-model="options.useGrouping" />
     </div>
-
+    <hr>
     <div class="formTokenBox">
       <label for="separtor">Seperator</label>
       <input class="form-control token" id="separtor" type="text" v-model="options.separator" />
       <label for="Decimal">Decimal</label>
       <input class="form-control token" id="Decimal" type="text" v-model="options.decimal" />
     </div>
+    <hr>
     <div class="formSubStr">
       <label for="pre">Pre-Fix</label>
       <input class="form-control token" id="pre" type="text" v-model="options.prefix" />
@@ -148,32 +150,45 @@ h2 {
 .formTokenBox,
 .formSubStr {
   display: flex;
+  margin: 10px auto;
   justify-content: center;
+  align-items: center;
+}
+.formTokenBox input,
+.formSubStr input {
+  height: 40px;
+}
+.formCheckBox input {
+  display: none;
+  margin: 10px 15px;
+  line-height: 1.5em;
+}
+.formCheckBox label {
+  border: #2c3e50 1px solid;
+  padding: 20px;
+  cursor: pointer;
+  width: 400px;
+  box-sizing: border-box;
 }
 .formTokenBox input {
   width: 5%;
-  margin: 10px 15px;
+  line-height: 1.5em;
 }
-.formCheckBox input {
-  width: 7%;
-}
+
 .formSubStr input {
   width: 7%;
-  margin: 10px 15px;
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
+input ~ label {
+  margin-left: 30px;
 }
-
-li {
-  display: inline-block;
-  margin: 0 10px;
+label ~ input {
+  margin-left: 10px;
 }
-
-a {
-  color: #42b983;
+.ps {
+  margin-bottom: 30px;
+}
+hr {
+  width: 70%;
 }
 .countup {
   font-size: 4em;
