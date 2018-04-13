@@ -49,7 +49,7 @@ export default {
       msg: "CountUp js Template",
       startVal: 20,
       endVal: 2000,
-      decimals: 2,
+      decimals: 0,
       duration: 2,
       options: {
         useEasing: true,
